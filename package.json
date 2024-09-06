@@ -5,14 +5,37 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon server.js"
+    "dev": "nodemon src/index.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@sequelize/postgres": "^7.0.0-alpha.41",
+    "bcrypt": "^5.1.1",
     "koa": "^2.15.3",
+    "koa-bodyparser": "^4.4.1",
+    "koa-logger": "^3.2.1",
     "koa-parser": "^1.0.8",
-    "koa-router": "^12.0.1"
+    "koa-passport": "^6.0.0",
+    "koa-router": "^12.0.1",
+    "koa-session": "^6.4.0",
+    "passport-local": "^1.0.0",
+    "pg": "^8.12.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.3"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/koa": "^2.14.0",
+    "@types/koa-bodyparser": "^4.3.12",
+    "@types/koa-passport": "^6.0.3",
+    "@types/koa-router": "^7.4.8",
+    "@types/node": "^20.11.0",
+    "@types/passport-local": "^1.0.38",
+    "@types/pg": "^8.10.9",
+    "nodemon": "^3.1.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
   }
 }
