@@ -1,4 +1,5 @@
-import db from "../../models";
+import db from "../models";
+import Film ,{ FilmMap } from "../models/film"
 
 export const FilmController = () => {
   
@@ -15,9 +16,9 @@ export const FilmController = () => {
         }
     };
     const findAll = async (ctx) => {
-        console.log('db', db)
+        FilmMap(db);
         try {
-            ctx.body = await db.film.findAll();
+            ctx.body = await Film.findAll();
         } catch (error) {
             ctx.throw(error);
             
