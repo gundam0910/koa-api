@@ -1,20 +1,19 @@
-import { Model, Sequelize, DataTypes } from 'sequelize';
-export default class Film extends Model {
-  public film_id?: number;
-  public title?: string;
-  public description?: string;
-  public release_year?: string;
-  public language_id?: string;
-  public rental_duration?: string;
-  public rental_rate?: string;
-  public length?: string;
-  public replacement_cost?: string;
-  public rating?: string;
-  public last_update?: string;
-  public special_features?: string;
-  public fulltext?: string;
-}
-export const FilmMap = (sequelize: Sequelize) => {
+'use strict';
+const {
+  Model
+} = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
+  class Film extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      // define association here
+    }
+
+  }
   Film.init({
     film_id: {
       type: DataTypes.INTEGER,
@@ -36,7 +35,9 @@ export const FilmMap = (sequelize: Sequelize) => {
   }, {
     sequelize,
     tableName: 'film',
+    modelName: 'film',
+    underscored: true,
     timestamps: false
   });
-  Film.sync();
-}
+  return Film;
+};

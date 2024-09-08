@@ -5,13 +5,29 @@ import bodyParser from 'koa-bodyparser';
 import Router from 'koa-router';
 import { routes } from './routes';
 import { authMiddleware } from './authMiddleware';
+import dotenv from "dotenv"
+
+// const { sequelize } = require('./sequelize/models');
+
+// const connectDb = async () => {
+//     console.log('Checking database connection...');
+
+//     try {
+//         await sequelize.authenticate();
+//         console.log('Database connection established.');
+//     } catch(e) {
+//         console.log('Database connection failed', e);
+//         process.exit(1);
+//     }
+// };
 
 async function main() {
+    dotenv.config();
     const app = new koa();
     const router = new Router();
     const PORT = 4000;
 
-    app.keys = ["8c9d4711-e84a-4c5f-982a-de9ea425116b"];
+    // await connectDb();
 
     app.use(session({}, app));
 

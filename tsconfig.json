@@ -2,14 +2,20 @@
     "compilerOptions": {
         "module": "commonjs",
         "esModuleInterop": true,
-        "target": "es6",
+        "target": "es2016",
         "moduleResolution": "node",
         "sourceMap": true,
-        "outDir": "dist",
+        "outDir": "./",
         "rootDir": "src",
         "allowJs": true,
-        "resolveJsonModule": true
+        "resolveJsonModule": true,
+        "noEmit": true,
+        "strict": false
     },
     "lib": ["es2015"],
-    "include": ["src/"]
+    "include": ["./src/**/*", "./sequelize/**/*.ts", "./sequelize/**/*.js"],
+    "exclude": [
+        "node_modules",
+        "sequelize"
+    ]
 }

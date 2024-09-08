@@ -6,12 +6,13 @@ import { FilmController } from "../controllers"
 
 const router = new Router();
 
-const { create, findAll } = FilmController();
+const { create, findAll, findOne } = FilmController();
 
-export function routes(router) {
-  router.get("/", (ctx) => (ctx.body = "This is homepage"));
+export function routes(router: any) {
+  router.get("/", (ctx: any) => (ctx.body = "This is homepage"));
   router.get("/film", findAll);
-  router.post("/register", async (ctx) => {
+  router.get("/film/:id", findOne);
+  router.post("/register", async (ctx: any) => {
 
     ctx.body = "registered successfully";
   });
@@ -21,13 +22,13 @@ export function routes(router) {
     failureRedirect: '/'
   }));
 
-  router.get("/app", (ctx) => {
+  router.get("/app", (ctx: any) => {
     const user = ctx.session.passport.user;
     console.log({ user });
     ctx.body = "App"
   });
 
-    router.get('/logout', ctx => {
+    router.get('/logout', (ctx: any) => {
         ctx.logout();
     })
 }
