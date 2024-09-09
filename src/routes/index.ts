@@ -2,16 +2,24 @@ import bcrypt from "bcrypt";
 import passport from 'koa-passport';
 // import { pool } from "./db";
 import Router from 'koa-router';
-import { FilmController } from "../controllers"
+import { FilmController, ActorController } from "../controllers"
 
 const router = new Router();
 
-const { create, findAll, findOne } = FilmController();
+const { createFilm, findAllFilm, findOneFilm, updateFilm } = FilmController();
+const { createActor, findAllActor, findOneActor, updateActor } = ActorController();
 
 export function routes(router: any) {
   router.get("/", (ctx: any) => (ctx.body = "This is homepage"));
-  router.get("/film", findAll);
-  router.get("/film/:id", findOne);
+  router.get("/film", findAllFilm);
+  router.get("/film/:id", findOneFilm);
+  router.post("/film", createFilm);
+  router.put("/film/:id", updateFilm);
+  router.get("/actor", findAllActor);
+  router.get("/actor/:id", findOneActor);
+  router.post("/actor", createActor);
+  router.put("/actor/:id", updateActor);
+
   router.post("/register", async (ctx: any) => {
 
     ctx.body = "registered successfully";

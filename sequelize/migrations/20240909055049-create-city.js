@@ -2,27 +2,20 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('inventory', {
-      id: {
+    await queryInterface.createTable('cities', {
+      city_id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      inventory_id: {
-        type: Sequelize.INTEGER,
-        references: 'inventory',
-        referencesKey: 'inventory_id'
+      city: {
+        type: Sequelize.STRING
       },
-      film_id: {
+      country_id: {
         type: Sequelize.INTEGER,
-        references: 'film',
-        referencesKey: 'film_id'
-      },
-      store_id: {
-        type: Sequelize.INTEGER,
-        references: 'store',
-        referencesKey: 'store_id'
+        references: 'country',
+        referencesKey: 'country_id'
       },
       last_update: {
         type: Sequelize.STRING
@@ -38,6 +31,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('inventory');
+    await queryInterface.dropTable('cities');
   }
 };

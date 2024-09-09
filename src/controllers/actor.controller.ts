@@ -1,11 +1,11 @@
 const db = require('../../sequelize/models');
-const Film = db.film;
+const Actor = db.actor;
 
-export const FilmController = () => {
+export const ActorController = () => {
   
-    const createFilm = async (ctx: any) => {
+    const createActor = async (ctx: any) => {
         try {
-            ctx.body = await Film.create({
+            ctx.body = await Actor.create({
                 title: ctx.request.body.title,
                 description: ctx.request.body.description,
                 release_year: ctx.request.body.release_year
@@ -15,21 +15,21 @@ export const FilmController = () => {
             
         }
     };
-    const findAllFilm = async (ctx: any) => {
+    const findAllActor = async (ctx: any) => {
 
         try {
-            ctx.body = await Film.findAll();
+            ctx.body = await Actor.findAll();
         } catch (error) {
             ctx.throw(error);
             
         }
     };
     
-    const findOneFilm = async (ctx: any) => {
+    const findOneActor = async (ctx: any) => {
 
         try {
-            ctx.body = await Film.findOne({
-                where: { film_id : ctx.params.id}
+            ctx.body = await Actor.findOne({
+                where: { actor_id : ctx.params.id}
             });
         } catch (error) {
             ctx.throw(error);
@@ -37,16 +37,16 @@ export const FilmController = () => {
         }
     };
 
-    const updateFilm = async (ctx: any) => {
+    const updateActor = async (ctx: any) => {
 
         try {
-            ctx.body = await Film.update({
+            ctx.body = await Actor.update({
                 title: ctx.request.body.title,
                 description: ctx.request.body.description,
                 release_year: ctx.request.body.release_year
             },
                 {
-                where: { film_id : ctx.params.id}
+                where: { actor_id : ctx.params.id}
             });
         } catch (error) {
             ctx.throw(error);
@@ -54,9 +54,9 @@ export const FilmController = () => {
         }
     };
     return {
-      createFilm,
-      findAllFilm,
-      findOneFilm,
-      updateFilm
+      createActor,
+      findAllActor,
+      findOneActor,
+      updateActor
     };
   };
